@@ -1,0 +1,120 @@
+
+<div fxFlex.gt-sm="90.00%" fxFlex.gt-xs="100.00%" fxFlex="100%">
+    <nz-card [nzBordered]="true" nzTitle="{{cardTitle | uppercase}}">
+        <br> <br>
+        <form [formGroup]="form" class="employee-form" (ngSubmit)="onSubmit(form.value)">
+
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for=" "> First Name</label>
+                        <input formControlName="first_name" class="form-control" required aria-label="Category Name" />
+                        <small class="text-danger"
+                            *ngIf="form.get('first_name')?.touched && form.get('first_name')?.hasError('required')">
+                            Field is required</small>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for=" "> Last Name</label>
+                        <input formControlName="last_name" class="form-control" required aria-label="Last Name" />
+                        <small class="text-danger"
+                            *ngIf="form.get('last_name')?.touched && form.get('last_name')?.hasError('required')">
+                            Field is required</small>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for=" "> Other Names</label>
+                        <input formControlName="other_name" class="form-control" required aria-label="Other Name" />
+                        <small class="text-danger"
+                            *ngIf="form.get('other_name')?.touched && form.get('other_name')?.hasError('required')">
+                            Field is required</small>
+                    </div>
+                </div>
+
+
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for=" "> Email</label>
+                        <input formControlName="email" class="form-control" required aria-label="Email Name" />
+                        <small class="text-danger"
+                            *ngIf="form.get('email')?.touched && form.get('email')?.hasError('required')">
+                            Email is required</small>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for=" "> Phone Number</label>
+                        <input formControlName="email" class="form-control" required aria-label="Phone" />
+                        <small class="text-danger"
+                            *ngIf="form.get('phone')?.touched && form.get('phone')?.hasError('required')">
+                            Email is required</small>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="national_id" >ID Number</label>
+                        <input formControlName="national_id" class="form-control" required aria-label="Phone" />
+                        <small class="text-danger"
+                            *ngIf="form.get('national_id')?.touched && form.get('national_id')?.hasError('required')">
+                            ID Number is required</small>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="staff_no" >Staff Number</label>
+                        <input formControlName="staff_no" class="form-control" required aria-label="Phone" />
+                        <small class="text-danger"
+                            *ngIf="form.get('staff_no')?.touched && form.get('staff_no')?.hasError('required')">
+                            Staff Number is required</small>
+                    </div>
+                    </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="revenue_pin" >Revenue Authority Pin</label>
+                        <input formControlName="revenue_pin" class="form-control" required aria-label="Phone" />
+                        <small class="text-danger"
+                            *ngIf="form.get('revenue_pin')?.touched && form.get('revenue_pin')?.hasError('required')">
+                           Pin is required</small>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="national_id" >Loan Limit</label>
+                        <input formControlName="national_id" class="form-control" required aria-label="Loan Limit" />
+                        <small class="text-danger"
+                            *ngIf="form.get('loan_limit')?.touched && form.get('loan_limit')?.hasError('required')">
+                            ID Number is required</small>
+                    </div>
+                </div>
+
+                <!-- <div class="form-group">
+        <label for="category_code"> Agent Category Code</label>
+        <select formControlName="category_code" class="form-control"  required aria-label="Category Code">
+            <option value="super">SUPER</option>
+            <option value="sub">SUBAGENT</option>
+            <option value="standalone">STANDALONE</option>
+        </select>
+        <small class="text-danger"
+        *ngIf="form.controls['last_name'].errors.required">
+            Field is required</small>
+    </div> -->
+           
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <button (click)="close()"  type="button" class="pull-left cancel-btn" nz-button nzType="primary" >
+                        <span> Cancel</span>
+                      </button>
+                </div>
+                <div class="col-6">
+                    <button type="submit"  class="pull-right submit-btn" nz-button nzType="primary" >
+                        <span>Submit</span>
+                      </button>
+                </div>
+            </div>
+        </form>
+    </nz-card>
+</div>

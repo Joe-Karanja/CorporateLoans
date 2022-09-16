@@ -1,0 +1,62 @@
+<div fxLayout="row wrap" fxLayoutAlign="center center">
+  <div fxFlex.gt-sm="90.00%" fxFlex.gt-xs="100.00%" fxFlex="100%">
+    <nz-card [nzBordered]="true" nzTitle="{{cardTitle | uppercase}}" [nzExtra]="extraTemplate">
+      <nz-table #basicTable [nzData]="workflows" nzSize="small" [nzFrontPagination]="false" [nzLoading]="loading"
+        [nzTotal]="total" [nzPageSize]="pageSize" [nzPageIndex]="page" nzShowSizeChanger
+        (nzQueryParams)="onQueryParamsChange($event)">
+        <thead style="font-weight: bold;">
+          <tr>
+            <th>S.N</th>
+            <th>Date</th>
+            <th>Customer Name</th>
+            <th>Amount</th>
+            <th>Loan Fee</th>
+            <th>Interest Rate</th>
+            <th>Duration</th>
+            <!-- <th>Purpose</th> -->
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of basicTable.data; let i = index;">
+            <td>{{i+1}}</td>
+            <td>{{data.createdOn}}</td>
+            <td>{{data.customer_name | titlecase}}</td>
+            <td>{{data.amount}}</td>
+            <td>{{data.fee}}</td>
+            <td>{{data.interest}}</td>
+            <td>{{data.duration}}</td>
+
+            <td>
+              <!-- {{data.status}} -->
+              <app-label-completed [value]="data.status"></app-label-completed>
+              <!-- <app-active-label [labelValue]="data.isActive"></app-active-label> -->
+            </td>
+
+            <td>
+              <button nz-button nzSize="small" nzType="primary" nzGhost>
+                <i nz-icon (click)="viewMore(data)" nzType="eye" nzTheme="outline"></i>
+              </button>
+
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </nz-card>
+    <ng-template #extraTemplate>
+      <button nz-button nzType="primary"></button>&nbsp;
+      <button nz-button nzType="primary"></button>
+      <mat-menu #menu="matMenu" [overlapTrigger]="false">
+        <button mat-menu-item (click)="exportWorkflowXLSX()">
+          <mat-icon>file_copy</mat-icon>
+          XLSX
+        </button>
+        <button mat-menu-item (click)="exportWorkflowPDF()">
+          <mat-icon>picture_as_pdf</mat-icon>
+          PDF
+        </button>
+      </mat-menu>
+    </ng-template>
+  </div>
+</div>

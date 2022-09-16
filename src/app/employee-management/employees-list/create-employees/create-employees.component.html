@@ -1,0 +1,90 @@
+<ng-container [formGroup]="employeesForm">
+<!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}} -->
+  <!-- </button> -->
+  <mat-stepper [linear]="isLinear" #stepper>
+    <mat-step >
+      <form>
+        <ng-template matStepLabel>Personal Details</ng-template>
+      <app-personal-details formGroupName="personalForm"></app-personal-details>
+        <div>
+          <button class="btn btn-primary pull-right" mat-button (click)="stepNext(stepper)">
+            
+            Next
+            <span
+            [inlineSVG]="
+              './assets/media/icons/duotune/arrows/arr064.svg'
+            "
+            class="svg-icon svg-icon-3 ms-2 me-0"
+          ></span>
+          </button>
+          <!-- <button mat-button matStepperNext>Next</button> -->
+        </div>
+      </form>
+    </mat-step>
+    <mat-step label="Contact Details">
+      <form>
+       <app-contact-details formGroupName="contactForm"></app-contact-details>
+        <div>
+          <button class="btn btn-secondary" mat-button matStepperPrevious>
+            <span
+            [inlineSVG]="
+              './assets/media/icons/duotune/arrows/arr063.svg'
+            "
+            class="svg-icon svg-icon-3 ms-2 me-0"
+          ></span>
+            Back</button>
+          <button class="btn btn-primary pull-right" mat-button matStepperNext>Next
+            <span
+            [inlineSVG]="
+              './assets/media/icons/duotune/arrows/arr064.svg'
+            "
+            class="svg-icon svg-icon-3 ms-2 me-0"
+          ></span>
+          </button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step  label="Additional Details">
+      <form>
+      <app-additional-info formGroupName="additionalForm"></app-additional-info>
+        <div>
+          <button class="btn btn-sm btn-secondary" mat-button matStepperPrevious>
+            <span
+            [inlineSVG]="
+              './assets/media/icons/duotune/arrows/arr063.svg'
+            "
+            class="svg-icon svg-icon-3 ms-2 me-0"
+          ></span>
+            Back</button>
+          <button class="btn btn-sm btn-primary pull-right" mat-button matStepperNext>Next
+            <span
+            [inlineSVG]="
+              './assets/media/icons/duotune/arrows/arr064.svg'
+            "
+            class="svg-icon svg-icon-3 ms-2 me-0"
+          ></span>
+          </button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Preview & Submit</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>
+          <span
+          [inlineSVG]="
+            './assets/media/icons/duotune/arrows/arr063.svg'
+          "
+          class="svg-icon svg-icon-3 ms-2 me-0"
+        ></span>
+          Back</button>
+        <button accent="primary" type="submit" (click)="onSubmit(employeesForm.value)" mat-button color="primary"(click)="stepper.reset()">Submit
+         
+        </button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+  
+</ng-container>

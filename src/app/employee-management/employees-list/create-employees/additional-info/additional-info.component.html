@@ -1,0 +1,53 @@
+<div class="container">
+    <form [formGroup]="form" class="employee-form" >
+
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label for=" ">Registration Date</label>
+                    <input formControlName="registration_date" class="form-control" required aria-label="Phone" />
+                    <small class="text-danger"
+                        *ngIf="form.get('registration_date')?.touched && form.get('registration_date')?.hasError('required')">
+                        Field is required</small>
+                </div>
+            </div>
+            <!-- <div class="col-6">
+                <div class="form-group">
+                    <label for=" "> Alt. Phone</label>
+                    <input formControlName="phone_number2" class="form-control" required aria-label="Last Name" />
+                    <small class="text-danger"
+                        *ngIf="form.get('phone_number2')?.touched && form.get('phone_number2')?.hasError('required')">
+                        Field is required</small>
+                </div>
+            </div> -->
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="status">Select Status</label>
+                    <select formControlName="status" class="form-control" required aria-label="Status">
+                        <option value="super">Active</option>
+                        <option value="sub">INACTIVE</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="branch">Select Branch</label>
+                    <select formControlName="branch" class="form-control" required aria-label="Branch">
+                        <option value="cbd">CBD</option>
+                        <option value="Ug">UG</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label for=" ">Loan Product</label>
+                    <input formControlName="loan_product" class="form-control" required aria-label="loan_product" />
+                    <small class="text-danger"
+                        *ngIf="form.get('loan_product')?.touched && form.get('loan_product')?.hasError('required')">
+                        Field is required</small>
+                </div>
+            </div>
+    
+        </div>
+    </form>
+</div>

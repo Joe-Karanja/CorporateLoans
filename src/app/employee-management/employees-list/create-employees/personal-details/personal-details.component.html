@@ -1,0 +1,69 @@
+<form [formGroup]="form" class="employee-form" (ngSubmit)="onSubmit(form.value)">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for=" "> First Name</label>
+                <input formControlName="first_name" class="form-control" required aria-label="Category Name" />
+                <small class="text-danger"
+                    *ngIf="form.get('first_name')?.touched && form.get('first_name')?.hasError('required')">
+                    Field is required</small>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for=" "> Last Name</label>
+                <input formControlName="last_name" class="form-control" required aria-label="Last Name" />
+                <small class="text-danger"
+                    *ngIf="form.get('last_name')?.touched && form.get('last_name')?.hasError('required')">
+                    Field is required</small>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for=" "> Other Names</label>
+                <input formControlName="other_name" class="form-control" required aria-label="Other Name" />
+                <small class="text-danger"
+                    *ngIf="form.get('other_name')?.touched && form.get('other_name')?.hasError('required')">
+                    Field is required</small>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="national_id">ID Number</label>
+                <input formControlName="national_id" class="form-control" required aria-label="Phone" />
+                <small class="text-danger"
+                    *ngIf="form.get('national_id')?.touched && form.get('national_id')?.hasError('required')">
+                    ID Number is required</small>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="gender"> Gender</label>
+                <select formControlName="gender" class="form-control" required aria-label="Gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="staff_no">DOB</label>
+                    <br>
+                    <!-- <input formControlName="dob" class="form-control" required aria-label="DOB" /> -->
+                    <nz-date-picker formControlName="dob"  class="dob" [nzFormat]="dateFormat"></nz-date-picker>
+                    <small class="text-danger"
+                        *ngIf="form.get('dob')?.touched && form.get('dob')?.hasError('required')">
+                        DOB is required</small>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="staff_no">Staff Number</label>
+                    <input formControlName="staff_no" class="form-control" required aria-label="Phone" />
+                    <small class="text-danger"
+                        *ngIf="form.get('staff_no')?.touched && form.get('staff_no')?.hasError('required')">
+                        Staff Number is required</small>
+                </div>
+            </div>
+        </div>
+</form>

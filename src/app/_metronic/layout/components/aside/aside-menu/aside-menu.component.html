@@ -1,0 +1,158 @@
+<div *ngIf="user$ | async as _user">
+  <!-- Dashboard -->
+  <div *ngIf="_user.email ==='admin@demo.com'" class="menu-item">
+    <a class="menu-link without-sub" routerLink="/dashboard" routerLinkActive="active"><span class="menu-icon">
+        <span [inlineSVG]="'./assets/media/icons/duotune/art/art002.svg'" class="svg-icon svg-icon-2"></span>
+      </span>
+      <span class="menu-title" translate="MENU.DASHBOARD"></span></a>
+  </div>
+
+  <div *ngIf="_user.email ==='user@demo.com'" class="menu-item">
+    <a class="menu-link without-sub" routerLink="/dashboard/hr" routerLinkActive="active"><span class="menu-icon">
+        <span [inlineSVG]="'./assets/media/icons/duotune/art/art002.svg'" class="svg-icon svg-icon-2"></span>
+      </span>
+      <span class="menu-title"> HR Dashboard</span></a>
+  </div>
+
+
+  <!-- Layout builder -->
+
+  <!-- Separator -->
+  <div class="menu-item">
+    <div class="menu-content pt-8 pb-2">
+      <span class="menu-section text-muted text-uppercase fs-8 ls-1">LOAN MANAGEMENT</span>
+    </div>
+  </div>
+
+  <!-- Pages -->
+  <div class="menu-item menu-accordion" data-kt-menu-trigger="click" routerLinkActive="here show">
+    <div class="menu-item">
+      <a class="menu-link without-sub" routerLink="/loan-applications/list" routerLinkActive="active"><span
+          class="menu-icon">
+          <span [inlineSVG]="'./assets/media/icons/duotune/general/gen025.svg'" class="svg-icon svg-icon-2"></span>
+        </span><span class="menu-title">New Applications</span></a>
+    </div>
+
+    <!-- <div class="menu-sub menu-sub-accordion" routerLinkActive="menu-active-bg"> -->
+
+    <!-- Accounts -->
+    <div class="menu-item menu-accordion" data-kt-menu-trigger="click" routerLinkActive="here show">
+      <span class="menu-link"><span class="menu-icon"><span class="svg-icon svg-icon-2"
+            [inlineSVG]="'./assets/media/icons/duotune/communication/com012.svg'"></span></span><span class="menu-title"
+          data-link="/crafted/account">Disbursed Loan</span><span class="menu-arrow"></span></span>
+      <div class="menu-sub menu-sub-accordion" routerLinkActive="menu-active-bg">
+        <div class="menu-item">
+          <a class="menu-link without-sub" routerLinkActive="active" routerLink="/loan-applications/disburse/loan"><span
+              class="menu-bullet"><span class="bullet bullet-dot"></span></span><span class="menu-title">
+              Disburse Loan</span></a>
+        </div>
+        <div class="menu-item">
+          <a class="menu-link without-sub" routerLinkActive="active"
+            routerLink="/loan-applications/disbursed/loans"><span class="menu-bullet"><span
+                class="bullet bullet-dot"></span></span><span class="menu-title">All
+              Disbursed</span></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- REPAYMENTS -->
+    <div class="menu-item menu-accordion" data-kt-menu-trigger="click" routerLinkActive="here show">
+      <span class="menu-link"><span class="menu-icon"><span class="svg-icon svg-icon-2"
+            [inlineSVG]="'./assets/media/icons/duotune/general/gen040.svg'"></span></span><span class="menu-title"
+          data-link="/error">Repayment</span><span class="menu-arrow"></span></span>
+      <div class="menu-sub menu-sub-accordion" routerLinkActive="menu-active-bg">
+        <div class="menu-item">
+          <a class="menu-link without-sub" routerLink="/loan-applications/repayment" routerLinkActive="active"><span
+              class="menu-bullet"><span class="bullet bullet-dot"></span></span><span class="menu-title">Repayment
+              Monitor</span></a>
+        </div>
+      </div>
+    </div>
+    <!-- Separator -->
+    <div class="menu-item">
+      <div class="menu-content pt-8 pb-2">
+        <span class="menu-section text-muted text-uppercase fs-8 ls-1">MANAGEMENT</span>
+      </div>
+    </div>
+
+    <!-- EMPLOYEES -->
+    <div *ngIf="_user.email ==='user@demo.com'" class="menu-item menu-accordion" data-kt-menu-trigger="click"
+      routerLinkActive="here show">
+      <span class="menu-link"><span class="menu-icon"><span class="svg-icon svg-icon-2"
+            [inlineSVG]="'./assets/media/icons/duotune/communication/com012.svg'"></span></span><span class="menu-title"
+          data-link="/apps/chat">Employees</span><span class="menu-arrow"></span></span>
+      <div class="menu-sub menu-sub-accordion" routerLinkActive="menu-active-bg">
+        <div class="menu-item">
+          <a class="menu-link without-sub" routerLinkActive="active" routerLink="/employees/manage/create"><span
+              class="menu-bullet"><span class="bullet bullet-dot"></span></span><span class="menu-title">Create
+              Employees</span></a>
+        </div>
+        <div class="menu-item">
+          <a class="menu-link without-sub" routerLinkActive="active" routerLink="/employees/manage"><span
+              class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
+              class="menu-title">Employees</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="_user.email ==='admin@demo.com'" class="menu-item menu-accordion" data-kt-menu-trigger="click"
+      routerLinkActive="here show">
+      <span class="menu-link"><span class="menu-icon"><span class="svg-icon svg-icon-2"
+            [inlineSVG]="'./assets/media/icons/duotune/communication/com012.svg'"></span></span><span class="menu-title"
+          data-link="/apps/chat">Manage Corporates</span><span class="menu-arrow"></span></span>
+      <div class="menu-sub menu-sub-accordion" routerLinkActive="menu-active-bg">
+        <div class="menu-item">
+          <a class="menu-link without-sub" routerLinkActive="active" routerLink="corporates/manage/create"><span
+              class="menu-bullet"><span class="bullet bullet-dot"></span></span><span class="menu-title">Create
+              Corporate</span></a>
+        </div>
+        <div class="menu-item">
+          <a class="menu-link without-sub" routerLinkActive="active" routerLink="corporates/manage"><span
+              class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
+              class="menu-title">List Corporates</span></a>
+        </div>
+      </div>
+    </div>
+
+
+
+<!-- USER MANAGEMENT  -->
+<div class="menu-item menu-accordion" data-kt-menu-trigger="click" routerLinkActive="here show">
+  <span class="menu-link"><span class="menu-icon"><span class="svg-icon svg-icon-2"
+        [inlineSVG]="'./assets/media/icons/duotune/communication/com006.svg'"></span></span><span class="menu-title"
+      data-link="/apps/chat">User Management</span><span class="menu-arrow"></span></span>
+  <div class="menu-sub menu-sub-accordion" routerLinkActive="menu-active-bg">
+    <div class="menu-item">
+      <a class="menu-link without-sub" routerLinkActive="active" routerLink="/users/create"><span
+          class="menu-bullet"><span class="bullet bullet-dot"></span></span><span class="menu-title">Create
+          Users</span></a>
+    </div>
+    <div class="menu-item">
+      <a class="menu-link without-sub" routerLinkActive="active" routerLink="/users/management"><span
+          class="menu-bullet"><span class="bullet bullet-dot"></span></span><span class="menu-title">Manage
+          Users</span></a>
+    </div>
+    <div class="menu-item">
+      <a class="menu-link without-sub" routerLinkActive="active" routerLink="/apps/chat/private-chat"><span
+          class="menu-bullet"><span class="bullet bullet-dot"></span></span><span class="menu-title">Profiles</span></a>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- <div *ngIf="_user.email ==='admin@demo.com'" class="menu-item">
+    <a class="menu-link without-sub" routerLink="/product/manage" routerLinkActive="active"><span class="menu-icon">
+        <span [inlineSVG]="'./assets/media/icons/duotune/art/art002.svg'" class="svg-icon svg-icon-2"></span>
+      </span>
+      <span class="menu-title">Product Management</span></a>
+  </div> -->
+
+
+<!-- Separator -->
+<div class="menu-item">
+  <div class="menu-content">
+    <div class="separator mx-1 my-4"></div>
+  </div>
+</div>
+</div>

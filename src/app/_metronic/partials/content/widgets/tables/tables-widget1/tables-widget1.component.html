@@ -1,0 +1,56 @@
+<div fxLayout="row wrap" fxLayoutAlign="center center">
+  <div fxFlex.gt-sm="90.00%" fxFlex.gt-xs="100.00%" fxFlex="100%">
+    <nz-card  [nzBordered]="true" nzTitle="{{cardTitle | uppercase}}" [nzExtra]="extraTemplate">
+      <nz-table #basicTable [nzData]="workflows" nzSize="small"  [nzFrontPagination]="false"[nzLoading]="loading" [nzTotal]="total" [nzPageSize]="pageSize" [nzPageIndex]="page" nzShowSizeChanger (nzQueryParams)="onQueryParamsChange($event)">
+        <thead style="font-weight: bold;">
+          <tr>
+            <th>Workflow Name</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Created On</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of basicTable.data">
+            <td>{{data.name | titlecase}}</td>
+            <td>{{data.remarks}}</td>
+            <td>
+              {{data.isActive}}
+              <!-- <app-active-label [labelValue]="data.isActive"></app-active-label> -->
+            </td>
+            <td>{{data.createdOn }}</td>
+            <td>
+                <button nz-button nzSize="small" nzType="primary" nzGhost
+                >&nbsp;
+                Actions
+                </button>
+                <!-- <mat-menu #menu="matMenu" [overlapTrigger]="false">
+                    <button mat-menu-item (click)="viewWorkflow(data)">
+                        <mat-icon>remove_red_eye</mat-icon>View
+                    </button>
+                    <button mat-menu-item (click)="editWorkflow(data)">
+                      <mat-icon>edit</mat-icon>Edit
+                  </button>
+               
+                </mat-menu> -->
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </nz-card>
+    <ng-template #extraTemplate>
+      <button nz-button nzType="primary"></button>&nbsp;
+      <button nz-button nzType="primary"></button>
+      <!-- <mat-menu #menu="matMenu" [overlapTrigger]="false">
+          <button mat-menu-item (click)="exportWorkflowXLSX()">
+              <mat-icon>file_copy</mat-icon>
+              XLSX
+          </button>
+          <button mat-menu-item (click)="exportWorkflowPDF()">
+              <mat-icon>picture_as_pdf</mat-icon>
+              PDF
+          </button>
+      </mat-menu> -->
+    </ng-template>
+  </div>
+</div>

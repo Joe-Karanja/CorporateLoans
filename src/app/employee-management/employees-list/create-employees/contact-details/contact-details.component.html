@@ -1,0 +1,40 @@
+<form [formGroup]="form" class="employee-form">
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label for=" "> Phone Number</label>
+                <input formControlName="phone_number" class="form-control" required aria-label="Phone" />
+                <small class="text-danger"
+                    *ngIf="form.get('phone_number')?.touched && form.get('phone_number')?.hasError('required')">
+                    Field is required</small>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label for=" "> Alt. Phone</label>
+                <input formControlName="phone_number2" class="form-control" required aria-label="Last Name" />
+                <small class="text-danger"
+                    *ngIf="form.get('phone_number2')?.touched && form.get('phone_number2')?.hasError('required')">
+                    Field is required</small>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label for=" "> Email</label>
+                <input formControlName="email" class="form-control" required aria-label="Email Name" />
+                <small class="text-danger"
+                    *ngIf="form.get('email')?.touched && form.get('email')?.hasError('required')">
+                    Email is required</small>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label for=" ">Office Email</label>
+                <input formControlName="office_mail" class="form-control" required aria-label="office_mail" />
+                <small class="text-danger"
+                    *ngIf="form.get('office_mail')?.touched && form.get('office_mail')?.hasError('required')">
+                    Email is required</small>
+            </div>
+        </div>
+    </div>
+</form>

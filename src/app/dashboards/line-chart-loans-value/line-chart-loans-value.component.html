@@ -1,0 +1,26 @@
+<div class="container">
+  <br>
+  <h3 class="title">{{chartDetailsV.title}}</h3>
+  <br>
+  <div class="w-100 h-500p">
+    <ngx-charts-line-chart
+      class="h-600p"
+      [scheme]="colorScheme"
+      [view]="view"
+      [results]="result"
+      [gradient]="gradient"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [legend]="showLegend"
+      [legendPosition]="legendPosition"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [title]="'Transaction Types'"
+      [xAxisLabel]="xContAxisLabel"
+      [yAxisLabel]="yContAxisLabel"
+      [autoScale]="autoScale"
+      (select)="onSelect($event)"
+    >
+    </ngx-charts-line-chart>
+  </div>
+</div>

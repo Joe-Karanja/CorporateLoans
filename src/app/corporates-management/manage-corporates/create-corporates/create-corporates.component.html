@@ -1,0 +1,117 @@
+<div fxFlex.gt-sm="90.00%" fxFlex.gt-xs="100.00%" fxFlex="100%">
+    <nz-card [nzBordered]="true" nzTitle="{{cardTitle | uppercase}}">
+        <br> <br>
+        <form [formGroup]="form">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="text-gray">Company Name</label>
+                    <input formControlName="name" class="form-control" type="text">
+                    <small class="text-danger"
+                        *ngIf="form.get('name')?.touched && form.get('name')?.hasError('required')">Required
+                        Field</small>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="text-gray">Registration No.</label>
+                    <input formControlName="company_reg" class="form-control" type="text">
+                    <small class="text-danger"
+                        *ngIf="form.get('company_reg')?.touched && form.get('company_reg')?.hasError('required')">Required
+                        Field</small>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="text-gray">Email</label>
+                    <input formControlName="email_address" class="form-control" type="text">
+                    <small class="text-danger"
+                        *ngIf="form.get('email_address')?.touched && form.get('email_address')?.hasError('required')">Required
+                        Field</small>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="text-gray">Telephone number</label>
+                    <input formControlName="phone" class="form-control" type="text">
+                    <small class="text-danger"
+                        *ngIf="form.get('phone')?.touched && form.get('phone')?.hasError('required')">Required
+                        Field</small>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="text-gray">Branch</label>
+                    <input formControlName="branch" class="form-control" type="text">
+                    <small class="text-danger"
+                        *ngIf="form.get('branch')?.touched && form.get('branch')?.hasError('required')">Required
+                        Field</small>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="text-gray">Postal Address</label>
+                    <input formControlName="postal_address" class="form-control" type="text">
+                    <small class="text-danger"
+                        *ngIf="form.get('postal_address')?.touched && form.get('postal_address')?.hasError('required')">Required
+                        Field</small>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="text-gray">Account number</label>
+                    <input formControlName="account_number" class="form-control" type="text">
+                    <small class="text-danger"
+                        *ngIf="form.get('account_number')?.touched && form.get('account_number')?.hasError('required')">Required
+                        Field</small>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="text-gray">Revenue certificate Pin</label>
+                    <input formControlName="kra_pin" class="form-control" type="text">
+                    <small class="text-danger"
+                        *ngIf="form.get('kra_pin')?.touched && form.get('kra_pin')?.hasError('required')">Required
+                        Field</small>
+                </div>
+            </div>
+            <!-- <div class="col-md-12">
+                <input [(ngModel)]="image"  [ngModelOptions]="{standalone: true}" type='file' name="image" id="file" class="img-upload-btn form-control"
+                    accept="image/*" (change)="processFile(imageInput)" hidden #imageInput>
+                <button class="btn upload-btn btn-primary btn-block rounded-0" (click)="imageInput.click()"
+                    type="button">
+                    <span *ngIf="!image"><i class="fa fa-upload"></i> Upload company certificate</span>
+
+                    <span *ngIf="image"><i class="fa fa-refresh"></i> Change Image... </span>
+                </button>
+
+                <div class="image-wrapper">
+                    <i *ngIf="image" class="fa fa-times delete-img" (click)="removeImage()"></i>
+                    <img [attr.src]="image" *ngIf="image" height="100px" width="100%">
+                    <!-- <img [src]="pest.avatar" *ngIf="!image" width="100%"> 
+                </div>
+            </div> -->
+        </div>
+            <div *ngIf="loading" class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                    aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+            </div>
+            <div *ngIf="errorMessages" class="alert alert-danger alert-dismissible fade show" role="alert">
+                <div *ngFor="let err of errorMessages">{{err}}</div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <button (click)="close()"  type="button" class="pull-left cancel-btn" nz-button nzType="primary" >
+                        <span> Cancel</span>
+                      </button>
+                </div>
+                <div class="col-6">
+                    <button type="submit"  class="pull-right submit-btn" nz-button nzType="primary" >
+                        <span>Submit</span>
+                      </button>
+                </div>
+            </div>
+        </form>
+    </nz-card>
+</div>

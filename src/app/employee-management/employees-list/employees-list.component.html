@@ -1,0 +1,97 @@
+<div nz-row>
+  <div nz-col nzSpan="12"></div>
+  <div nz-col nzSpan="4">
+    <button (click)="downloadTemplate()" class="pull-right button-upload" nz-button (click)="createEmployee()">
+      <span><i nz-icon nzType="cloud-download"></i> Download template</span>
+    </button>
+  </div>
+  <div nz-col nzSpan="4">
+    <button (click)="uploadEmployee()" class="pull-right button-upload" nz-button (click)="createEmployee()">
+      <span><i nz-icon nzType="cloud-upload"></i> Upload Excel</span>
+    </button>
+  </div>
+  <div nz-col nzSpan="4">
+    <button (click)="createEmployee()" class="pull-right" nz-button nzType="primary" (click)="createEmployee()">
+      <span>+ Create Employee</span>
+    </button>
+  </div>
+</div>
+<div fxLayout="row wrap">
+  <br> <br>
+  <div fxFlex.gt-sm="90.00%" fxFlex.gt-xs="100.00%" fxFlex="100%">
+    <nz-card [nzBordered]="true" nzTitle="{{cardTitle | uppercase}}">
+      <button *ngIf="allChecked" (click)="approveLimit('')" class="pull-right" nz-button nzType="primary">
+        <span><i class="fa fa-check-square text-white"></i> Approve Limits</span>
+      </button>
+      <nz-table #basicTable [nzData]="workflows" nzSize="small" [nzFrontPagination]="false" [nzLoading]="loading"
+        [nzTotal]="total" [nzPageSize]="pageSize" [nzPageIndex]="page" nzShowSizeChanger
+        (nzQueryParams)="onQueryParamsChange($event)">
+
+        <thead style="font-weight: bold;">
+          <tr>
+            <th>  
+              <div style="border-bottom: 1px solid rgb(233, 233, 233);">
+              <label
+                nz-checkbox
+                [(ngModel)]="allChecked"
+                (ngModelChange)="updateAllChecked()"
+                [nzIndeterminate]="indeterminate"
+              > 
+              </label>
+            </div></th>
+            <th>S.N</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone No.</th>
+            <th>National ID</th>
+            <th>KRA</th>
+            <th>Staff No.</th>
+            <th>Employment Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of basicTable.data; let i = index;">
+            <td>
+              <nz-checkbox-group [(ngModel)]="checkOptionsOne" (ngModelChange)="updateSingleChecked(i)"></nz-checkbox-group>
+            </td>
+            <td>{{i+1}}</td>
+
+            <td>{{data.name }}</td>
+            <td>{{data.email}}</td>
+            <td>{{data.phone}}</td>
+            <td>{{data.national_id}}</td>
+            <td>{{data.kra}}</td>
+            <td>{{data.staff_no}}</td>
+            <td>{{data.date}}</td>
+
+            <td>
+              <button nz-button nzSize="small" nzType="primary" nzGhost>
+                <i nz-icon (click)="viewMore(data)" nzType="eye" nzTheme="outline"></i>
+              </button> &nbsp;  &nbsp;
+              <button nz-button nzSize="small" nzType="primary" nzGhost>
+                <!-- <i nz-icon (click)="viewMore(data)" nzType="eye" nzTheme="outline"></i> -->
+                <i (click)="approveLimit(data)" class="fa text-success fa-1x fa-check-square"></i>
+              </button>
+             
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </nz-card>
+    <ng-template #extraTemplate>
+      <button nz-button nzType="primary"></button>&nbsp;
+      <button nz-button nzType="primary"></button>
+      <mat-menu #menu="matMenu" [overlapTrigger]="false">
+        <button mat-menu-item (click)="exportWorkflowXLSX()">
+          <mat-icon>file_copy</mat-icon>
+          XLSX
+        </button>
+        <button mat-menu-item (click)="exportWorkflowPDF()">
+          <mat-icon>picture_as_pdf</mat-icon>
+          PDF
+        </button>
+      </mat-menu>
+    </ng-template>
+  </div>
+</div>
